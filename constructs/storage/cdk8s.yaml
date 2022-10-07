@@ -1,0 +1,5 @@
+language: typescript
+app: node main.js
+imports:
+  - k8s
+  - https://raw.githubusercontent.com/GoogleCloudPlatform/k8s-config-connector/master/crds/storage_v1beta1_storagebucket.yaml
