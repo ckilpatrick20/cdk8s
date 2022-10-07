@@ -9,12 +9,12 @@ export class MyChart extends Chart {
     new StorageBucket( this, 'craigsBucket', {
       metadata: {
         annotations: {
-          "cnrm.cloud.google.com/project-id": "gs-bq-org-master"
+          "cnrm.cloud.google.com/project-id": "sample-project"
         },
-        name: 'craig-test-bucket'
+        name: 'test-bucket'
       },
       spec: {
-        // lifecycleRule: [ {action: delete} ],
+        // lifecycleRule: [ { action: Del} ],
         versioning: {
           enabled: true
         },
