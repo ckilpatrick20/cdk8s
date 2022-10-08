@@ -1,26 +1,14 @@
 import { Construct } from 'constructs';
 import { App, Chart, ChartProps } from 'cdk8s';
-import { StorageBucket } from './imports/storage.cnrm.cloud.google.com';
+import { Storage } from './lib/storage';
+import { StorageBucketNotification } from './lib/storage-notification'
 
 export class MyChart extends Chart {
   constructor(scope: Construct, id: string, props: ChartProps = { }) {
     super(scope, id, props);
 
-    new StorageBucket( this, 'craigsBucket', {
-      metadata: {
-        annotations: {
-          "cnrm.cloud.google.com/project-id": "sample-project"
-        },
-        name: 'test-bucket'
-      },
-      spec: {
-        // lifecycleRule: [ { action: Del} ],
-        versioning: {
-          enabled: true
-        },
-        uniformBucketLevelAccess: true
-      }
-    });
+    new Storage(this, 'hello-world', { name: 'SuperAwesomeBucket', projectID: 'SampleProject'});
+    new StorageBucketNotification(this, 'SampleNotification', { projectID: 'SampleProject' });
   }
 }
 
